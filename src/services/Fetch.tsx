@@ -1,12 +1,6 @@
-interface ListItem {
-    id: number;
-    name: string;
-}
+import { employees } from "../mock/Employees";
+import { Employee } from "../types/Employee";
 
-export const getItems = (): Promise<ListItem[]> => {
-    return Promise.resolve([
-        { id: 1, name: 'Item 1' },
-        { id: 2, name: 'Item 2' },
-        { id: 3, name: 'Item 3' },
-    ]);
+export const getEmployees = (): Promise<Employee[]> => {
+    return Promise.resolve(employees);
 };

@@ -1,15 +1,15 @@
 import React from 'react';
 
-interface ListItem {
+export interface ListItem<T> {
     id: number;
-    name: string;
+    name: T;
 }
 
-interface Props {
-    items: ListItem[];
+interface Props<T> {
+    items: ListItem<T>[];
 }
 
-const List: React.FC<Props> = ({ items }) => {
+export const List = <T extends string | number>({ items }: Props<T>) => {
     return (
         <ul>
             {items.map((item) => (
@@ -19,4 +19,3 @@ const List: React.FC<Props> = ({ items }) => {
     );
 };
 
-export default List;

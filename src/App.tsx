@@ -1,13 +1,16 @@
-import React from 'react';
-import List from './components/List';
-
-const items = [
-  { id: 1, name: 'Item 1' },
-  { id: 2, name: 'Item 2' },
-  { id: 3, name: 'Item 3' },
-];
+import React, { useEffect, useState } from 'react';
+import { List, ListItem } from './components/List';
+import { getItems } from './services/Fetch';
 
 function App() {
+  const [items, setItems] = useState<ListItem<string>[]>([]);
+
+  useEffect(() => {
+    getItems().then((result) => {
+      setItems(result);
+    });
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
